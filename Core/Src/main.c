@@ -65,6 +65,10 @@ typedef struct __attribute__((packed))
 
 #define OLED_LINE_NUM           4U
 #define OLED_COL_MAX            16U
+
+/* 屏自检：0 正常运行；1 只清屏后停住（看噪点还在不在）；2 四行写满 16 列测试图。
+   用来区分“屏幕本身有问题”和“程序没写满”。平时保持 0。 */
+#define OLED_SELFTEST           0
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -394,6 +398,36 @@ int main(void)
   /* USER CODE BEGIN 2 */
   OLED_Init();
   LedFlow_Init();
+
+#if (OLED_SELFTEST == 1)
+  /* 只清屏：如果这时右边缘的竖条噪点还在，说明那几列根本没被清到，
+     与主程序无关，问题在驱动的列寻址或屏幕本身。 */
+  for (;;)
+  {
+  }
+#elif (OLED_SELFTEST == 2)
+  /* 四行写满 16 列：正常应该看到连续的 0123456789ABCDEF。
+     末尾缺字符 = 那些列写不进去；出现错位 = 列寻址整体偏移。 */
+  {
+    char    test_line[OLED_COL_MAX + 1U];
+    uint8_t i;
+
+    for (i = 0U; i < OLED_COL_MAX; i++)
+    {
+      test_line[i] = "0123456789ABCDEF"[i];
+    }
+    test_line[OLED_COL_MAX] = '\0';
+
+    for (;;)
+    {
+      for (i = 0U; i < OLED_LINE_NUM; i++)
+      {
+        OLED_ShowString((uint8_t)(i + 1U), 1U, test_line);
+      }
+      HAL_Delay(500U);
+    }
+  }
+#endif
 
   s_displayDirty = 1U;                        /* 让主循环第一轮画出完整状态 */
 
