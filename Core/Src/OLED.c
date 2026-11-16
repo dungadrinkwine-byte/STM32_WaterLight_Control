@@ -5,8 +5,9 @@
 #define OLED_W_SCL(x)		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, (GPIO_PinState)(x))
 #define OLED_W_SDA(x)		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, (GPIO_PinState)(x))
 
-/* SH1106（1.3 寸）显存 132 列，可见窗口从第 2 列开始；SSD1306（0.96 寸）填 0 */
-#define OLED_SH1106_OFFSET	2
+/* 显存宽度：1.3 寸模块为 132 列，0.96 寸 SSD1306 为 128 列。
+   填 132 对两种屏都安全（多写的 0x00 绕回左侧，本身也是 0）。 */
+#define OLED_RAM_WIDTH		132
 
 /*引脚初始化*/
 void OLED_I2C_Init(void)
@@ -106,12 +107,6 @@ void OLED_WriteData(uint8_t Data)
   */
 void OLED_SetCursor(uint8_t Y, uint8_t X)
 {
-	/* 1.3 寸模块用的是 SH1106 控制器，显存有 132 列，可见窗口从第 2 列开始；
-	   按 0.96 寸（SSD1306）的方式从第 0 列写，右侧会留下 2 列没写过的显存，
-	   表现为屏幕最右边一条竖条噪点。加 2 列偏移即可对齐。
-	   换成 0.96 寸 SSD1306 模块时，把 OLED_SH1106_OFFSET 改成 0。 */
-	X += OLED_SH1106_OFFSET;
-
 	OLED_WriteCommand(0xB0 | Y);					//设置Y位置
 	OLED_WriteCommand(0x10 | ((X & 0xF0) >> 4));	//设置X位置高4位
 	OLED_WriteCommand(0x00 | (X & 0x0F));			//设置X位置低4位
@@ -121,14 +116,19 @@ void OLED_SetCursor(uint8_t Y, uint8_t X)
   * @brief  OLED清屏
   * @param  无
   * @retval 无
+  * @note   按 132 列清，而不是 128 列。1.3 寸模块的控制器显存是 132×64，
+  *         可见区比 0.96 寸的 128 列宽出 4 列；只清 128 列时最右侧那几列
+  *         会一直保留上电时的随机数据，看上去就是一条竖条噪点。
+  *         对 128 列的 0.96 寸模块，多写的 4 个 0x00 会绕回最左边，写的也是 0，
+  *         没有副作用。
   */
 void OLED_Clear(void)
-{  
+{
 	uint8_t i, j;
 	for (j = 0; j < 8; j++)
 	{
 		OLED_SetCursor(j, 0);
-		for(i = 0; i < 128; i++)
+		for(i = 0; i < OLED_RAM_WIDTH; i++)
 		{
 			OLED_WriteData(0x00);
 		}
