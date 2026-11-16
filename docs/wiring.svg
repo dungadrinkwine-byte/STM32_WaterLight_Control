@@ -1,0 +1,118 @@
+<svg viewBox="0 0 680 530" width="680" height="530" xmlns="http://www.w3.org/2000/svg">
+<title>STM32F103C8T6 三灯流水灯作业接线图</title>
+<desc>最小系统板居中，左侧三路 LED 经 220 欧电阻接 GND、下方四针 I2C OLED 接 PB1/PB0/3.3V/GND；右侧两个按键接 PA11/PA12 与 GND，下方 USB 转 TTL 模块与 PA9/PA10 交叉相连并共地。</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<rect x="0" y="0" width="680" height="530" fill="#FFFFFF"/>
+
+<rect x="250" y="40" width="180" height="470" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="340" y="64" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="500" fill="#0C447C">STM32F103C8T6</text>
+<text x="340" y="82" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#185FA5">最小系统板 · 40 针</text>
+
+<text x="243" y="100" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA0</text>
+<text x="243" y="155" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA2</text>
+<text x="243" y="210" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA4</text>
+<text x="243" y="370" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PB1</text>
+<text x="243" y="396" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PB0</text>
+<text x="243" y="422" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">3.3V</text>
+<text x="243" y="448" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">GND</text>
+<text x="243" y="490" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">GND</text>
+
+<text x="437" y="100" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA11</text>
+<text x="437" y="160" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA12</text>
+<text x="437" y="210" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">GND</text>
+<text x="437" y="372" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA9 · TX</text>
+<text x="437" y="398" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">PA10 · RX</text>
+<text x="437" y="424" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#0C447C">GND</text>
+
+<line x1="55" y1="100" x2="55" y2="490" stroke="#888780" stroke-width="1.5"/>
+<line x1="55" y1="490" x2="248" y2="490" stroke="#888780" stroke-width="1.5"/>
+<text x="55" y="508" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">GND</text>
+
+<line x1="55" y1="100" x2="96" y2="100" stroke="#888780" stroke-width="1.5"/>
+<line x1="96" y1="92" x2="96" y2="108" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M96 100 L118 92 L118 108 Z" fill="#EF9F27" stroke="#854F0B" stroke-width="0.5"/>
+<line x1="118" y1="100" x2="160" y2="100" stroke="#888780" stroke-width="1.5"/>
+<rect x="160" y="93" width="40" height="14" rx="2" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+<line x1="200" y1="100" x2="250" y2="100" stroke="#888780" stroke-width="1.5"/>
+<text x="107" y="87" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">LED1</text>
+<text x="180" y="87" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">220Ω</text>
+
+<line x1="55" y1="155" x2="96" y2="155" stroke="#888780" stroke-width="1.5"/>
+<line x1="96" y1="147" x2="96" y2="163" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M96 155 L118 147 L118 163 Z" fill="#EF9F27" stroke="#854F0B" stroke-width="0.5"/>
+<line x1="118" y1="155" x2="160" y2="155" stroke="#888780" stroke-width="1.5"/>
+<rect x="160" y="148" width="40" height="14" rx="2" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+<line x1="200" y1="155" x2="250" y2="155" stroke="#888780" stroke-width="1.5"/>
+<text x="107" y="142" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">LED2</text>
+<text x="180" y="142" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">220Ω</text>
+
+<line x1="55" y1="210" x2="96" y2="210" stroke="#888780" stroke-width="1.5"/>
+<line x1="96" y1="202" x2="96" y2="218" stroke="#854F0B" stroke-width="1.5"/>
+<path d="M96 210 L118 202 L118 218 Z" fill="#EF9F27" stroke="#854F0B" stroke-width="0.5"/>
+<line x1="118" y1="210" x2="160" y2="210" stroke="#888780" stroke-width="1.5"/>
+<rect x="160" y="203" width="40" height="14" rx="2" fill="#FAEEDA" stroke="#BA7517" stroke-width="0.5"/>
+<line x1="200" y1="210" x2="250" y2="210" stroke="#888780" stroke-width="1.5"/>
+<text x="107" y="197" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">LED3</text>
+<text x="180" y="197" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">220Ω</text>
+
+<rect x="40" y="330" width="170" height="145" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="125" y="350" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" font-weight="500" fill="#444441">0.96 寸 I²C OLED</text>
+<text x="203" y="370" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">SCL</text>
+<text x="203" y="396" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">SDA</text>
+<text x="203" y="422" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">VCC</text>
+<text x="203" y="448" text-anchor="end" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">GND</text>
+<line x1="210" y1="370" x2="250" y2="370" stroke="#888780" stroke-width="1.5"/>
+<line x1="210" y1="396" x2="250" y2="396" stroke="#888780" stroke-width="1.5"/>
+<line x1="210" y1="422" x2="250" y2="422" stroke="#888780" stroke-width="1.5"/>
+<line x1="210" y1="448" x2="250" y2="448" stroke="#888780" stroke-width="1.5"/>
+
+<line x1="430" y1="100" x2="498" y2="100" stroke="#888780" stroke-width="1.5"/>
+<line x1="498" y1="90" x2="498" y2="110" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="542" y1="90" x2="542" y2="110" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="498" y1="86" x2="542" y2="86" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="520" y1="86" x2="520" y2="78" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="542" y1="100" x2="610" y2="100" stroke="#888780" stroke-width="1.5"/>
+<text x="520" y="68" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">按键1 · 切换方向</text>
+
+<line x1="430" y1="160" x2="498" y2="160" stroke="#888780" stroke-width="1.5"/>
+<line x1="498" y1="150" x2="498" y2="170" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="542" y1="150" x2="542" y2="170" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="498" y1="146" x2="542" y2="146" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="520" y1="146" x2="520" y2="138" stroke="#5F5E5A" stroke-width="1.5"/>
+<line x1="542" y1="160" x2="610" y2="160" stroke="#888780" stroke-width="1.5"/>
+<text x="520" y="128" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">按键2 · 暂停/继续</text>
+
+<line x1="610" y1="100" x2="610" y2="210" stroke="#888780" stroke-width="1.5"/>
+<line x1="610" y1="210" x2="432" y2="210" stroke="#888780" stroke-width="1.5"/>
+<text x="610" y="228" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">GND</text>
+
+<rect x="480" y="330" width="160" height="140" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="560" y="350" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" font-weight="500" fill="#444441">USB 转 TTL 模块</text>
+<text x="487" y="372" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">RX</text>
+<text x="487" y="398" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">TX</text>
+<text x="487" y="424" text-anchor="start" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#444441">GND</text>
+<line x1="430" y1="372" x2="478" y2="372" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="480" y1="398" x2="432" y2="398" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="430" y1="424" x2="480" y2="424" stroke="#888780" stroke-width="1.5"/>
+<text x="560" y="452" text-anchor="middle" dominant-baseline="central" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#5F5E5A">USB 接电脑 · 3.3V 不接</text>
+
+<circle cx="250" cy="100" r="2" fill="#185FA5"/>
+<circle cx="250" cy="155" r="2" fill="#185FA5"/>
+<circle cx="250" cy="210" r="2" fill="#185FA5"/>
+<circle cx="250" cy="370" r="2" fill="#185FA5"/>
+<circle cx="250" cy="396" r="2" fill="#185FA5"/>
+<circle cx="250" cy="422" r="2" fill="#185FA5"/>
+<circle cx="250" cy="448" r="2" fill="#185FA5"/>
+<circle cx="250" cy="490" r="2" fill="#185FA5"/>
+<circle cx="430" cy="100" r="2" fill="#185FA5"/>
+<circle cx="430" cy="160" r="2" fill="#185FA5"/>
+<circle cx="430" cy="210" r="2" fill="#185FA5"/>
+<circle cx="430" cy="372" r="2" fill="#185FA5"/>
+<circle cx="430" cy="398" r="2" fill="#185FA5"/>
+<circle cx="430" cy="424" r="2" fill="#185FA5"/>
+</svg>
