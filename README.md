@@ -223,7 +223,10 @@ STATE=RUN,DIR=FWD,STEP=300,LED=1
 - ST 官方：UM1850（STM32F1 HAL 手册）、RM0008 参考手册、STM32F103C8 数据手册。
 - **OLED 驱动来源**：电控组群文件中的 `OLED.c` / `OLED.h` / `OLED_Font.h`（江协科技风格，软件 I²C + 8×16 字模），本仓库原样放在 `Core/Src`、`Core/Inc`。
 
-对该驱动只做了一处修改：`OLED_I2C_Init()` 里的 `GPIO_InitTypeDef` 原本没有初始化，`Pull` 字段是栈上随机值，可能让 SCL/SDA 带上拉低。已改成 `= {0}` 并显式设 `GPIO_PULLUP`，其余逻辑未改动。
+对该驱动做了两处修改：
+
+1. `OLED_I2C_Init()` 里的 `GPIO_InitTypeDef` 原本没有初始化，`Pull` 字段是栈上随机值，可能让 SCL/SDA 带上拉低。已改成 `= {0}` 并显式设 `GPIO_PULLUP`。
+2. 增加了 `OLED_SH1106_OFFSET`（`OLED_SetCursor` 里 `X += 2`）。实测用的模块是 **1.3 寸 SH1106**，显存 132 列、可见窗口从第 2 列开始；这份驱动是按 0.96 寸 SSD1306（128 列）写的，从第 0 列开始写会在屏幕最右侧留下 2 列没写过的显存，表现为一条竖条噪点。换回 0.96 寸屏时把该宏改成 0 即可。
 
 ## 七、思考题
 
