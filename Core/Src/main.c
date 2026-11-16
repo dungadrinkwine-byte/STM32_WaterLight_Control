@@ -106,9 +106,8 @@ static char             s_txBuf[48];
 static volatile uint8_t s_txBusy    = 0U;
 static volatile uint8_t s_txPending = 0U;
 
-/* 显示：dirty 表示状态变过，行缓存用于只重画内容有变化的行 */
+/* 显示：dirty 表示状态变过，只有变过才重画一次整屏 */
 static volatile uint8_t s_displayDirty = 1U;
-static char             s_lineCache[OLED_LINE_NUM][OLED_COL_MAX + 1U];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -274,7 +273,9 @@ static void Packet_Task(void)
   Status_Send();
 }
 
-/* 画一行：不足 16 字符用空格补齐，避免屏幕上残留上一帧的旧字符 */
+/* 画一行：不足 16 字符用空格补齐，把整行 128 像素全部覆盖一遍。
+   这里不做“内容没变就跳过”的优化——一旦某次写入失败导致屏幕与缓存不一致，
+   跳过逻辑会让残字永远留在屏上；四行整屏重画约 4 ms，代价可以忽略。 */
 static void Display_Line(uint8_t line, const char *text)
 {
   char    buf[OLED_COL_MAX + 1U];
@@ -291,13 +292,7 @@ static void Display_Line(uint8_t line, const char *text)
   }
   buf[OLED_COL_MAX] = '\0';
 
-  if (strcmp(buf, s_lineCache[line - 1U]) == 0)
-  {
-    return;                                   /* 这一行没变，不必重画 */
-  }
-
   OLED_ShowString(line, 1U, buf);
-  (void)memcpy(s_lineCache[line - 1U], buf, sizeof(buf));
 }
 
 static void Display_Refresh(void)
